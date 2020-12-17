@@ -5,7 +5,10 @@ import authOperations from "../../redux/auth/authOperations";
 
 const styles = {
   container: {
+    width: "100%",
+    textAlign: "right",
     display: "flex",
+    jastifyContent: "flex-end",
     alignItems: "center",
   },
   avatar: {
@@ -15,13 +18,21 @@ const styles = {
     fontWeight: 700,
     marginRight: 12,
   },
+  button: {
+    height: "35px",
+    width: "100px",
+    color: "white",
+    backgroundColor: "blue",
+    border: "1px solid grey",
+    borderRadius: "5px",
+  },
 };
 
 const UserMenu = ({ avatar, name, onLogout }) => (
   <div style={styles.container}>
-    <img src={avatar} alt="" width="32" style={styles.avatar} />
+    <img src={avatar} alt="" width="100px" style={styles.avatar} />
     <span style={styles.name}>Welcome, {name}</span>
-    <button type="button" onClick={onLogout}>
+    <button style={styles.button} type="button" onClick={onLogout}>
       Logout
     </button>
   </div>

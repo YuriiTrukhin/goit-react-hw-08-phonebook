@@ -1,6 +1,7 @@
 import axios from "axios";
 import contactsActions from "./contactsActions";
 axios.defaults.baseURL = "https://goit-phonebook-api.herokuapp.com/";
+
 const addContact = ({ name, number }) => (dispatch) => {
   dispatch(contactsActions.addContactRequest());
   axios

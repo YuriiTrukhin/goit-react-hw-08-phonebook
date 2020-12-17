@@ -8,6 +8,8 @@ import { connect } from "react-redux";
 import authSelectors from "../redux/auth/authSelectors";
 import contactsOperation from "../redux/contacts/contactsOperation";
 
+
+
 class ContactsView extends Component {
   componentDidMount() {
     if (!this.props.isAuthenticated) {

@@ -1,9 +1,47 @@
 import React, { Component } from "react";
 import routes from "../routes";
-import { BrowserRouter, Redirect, Route, Switch, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import authOperations from "../redux/auth/authOperations";
 import authSelectors from "../redux/auth/authSelectors";
+
+const styles = {
+  form: {
+    margin: "0 auto",
+    width: 320,
+  },
+  label: {
+    display: "flex",
+    flexDirection: "column",
+    padding: 4,
+    marginBottom: "10px",
+  },
+  container: {
+    width: "320px",
+    margin: "0 auto",
+    textAlign: "left",
+    padding: "10px",
+  },
+  button: {
+    height: "35px",
+    width: "100px",
+    color: "white",
+    backgroundColor: "blue",
+    border: "1px solid grey",
+    borderRadius: "5px",
+  },
+  link: {
+    textAlign: "center",
+    display: "inline-block",
+    textDecoration: "none",
+    color: "white",
+    backgroundColor: "blue",
+    border: "1px solid grey",
+    borderRadius: "5px",
+    padding: "4px",
+    width: "90px",
+  },
+};
 
 class LoginView extends Component {
   state = {
@@ -33,22 +71,27 @@ class LoginView extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <div>
-        <NavLink to={routes.HomeView}> Back</NavLink>
+      <div style={styles.container}>
+        <NavLink style={styles.link} to={routes.HomeView}>
+          {" "}
+          Back
+        </NavLink>
         <h1>Login page</h1>
 
-        <form onSubmit={this.handleSubmit}>
-          <label>
+        <form style={styles.form} onSubmit={this.handleSubmit}>
+          <label style={styles.label}>
             Email
-            <input type="email" name="email" value={email} onChange={this.handleChange} />
+            <input required type="email" name="email" value={email} onChange={this.handleChange} />
           </label>
 
-          <label>
+          <label style={styles.label}>
             Password
-            <input type="password" name="password" value={password} onChange={this.handleChange} />
+            <input required type="password" name="password" value={password} onChange={this.handleChange} />
           </label>
 
-          <button type="submit">Login</button>
+          <button style={styles.button} type="submit">
+            Login
+          </button>
         </form>
       </div>
     );

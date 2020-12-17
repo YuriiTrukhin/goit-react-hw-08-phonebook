@@ -21,7 +21,11 @@ const register = (credentials) => (dispatch) => {
       token.set(response.data.token);
       dispatch(authActions.registerSuccess(response.data));
     })
-    .catch((error) => dispatch(authActions.registerError(error)));
+    // eslint-disable-next-line no-sequences
+    .catch(
+      // eslint-disable-next-line no-sequences
+      (error) => (dispatch(authActions.registerError(error)), alert("Пользователь с такой Почтой уже существует"))
+    );
 };
 
 const logIn = (credentials) => (dispatch) => {
@@ -33,7 +37,8 @@ const logIn = (credentials) => (dispatch) => {
       token.set(response.data.token);
       dispatch(authActions.loginSuccess(response.data));
     })
-    .catch((error) => dispatch(authActions.loginError(error)));
+    // eslint-disable-next-line no-sequences
+    .catch((error) => (dispatch(authActions.loginError(error)), alert("Ошибка в логине, или пароле!")));
 };
 
 const getCurrentUser = () => (dispatch, getState) => {
@@ -66,4 +71,5 @@ const logOut = () => (dispatch) => {
     .catch((error) => dispatch(authActions.logoutError(error)));
 };
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default { register, logOut, logIn, getCurrentUser };
