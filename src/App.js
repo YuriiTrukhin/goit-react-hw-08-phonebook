@@ -11,6 +11,7 @@ import authSelectors from "./redux/auth/authSelectors";
 import UserMenu from "./components/UserMenu/UserMenu";
 import authOperations from "./redux/auth/authOperations";
 import Loading from "./components/Loading/Loading";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 // import React, { Component } from "react";
 

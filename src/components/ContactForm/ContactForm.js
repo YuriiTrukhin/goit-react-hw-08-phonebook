@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import styles from "./ContactForm.module.css";
+// import styles from "./ContactForm.module.css";
 import newContact from "../../redux/contacts/contactsOperation";
 
 import Alert from "../Alert/Alert";
 import selectors from "../../redux/selectors";
+import { Container } from "react-bootstrap";
 
 class ContactForm extends Component {
   state = { name: "", number: "", contactAdded: false };
@@ -37,37 +38,35 @@ class ContactForm extends Component {
       <>
         <Alert contactAdded={contactAdded} />
 
-        <div>
-          <form className={styles.form} action="" onSubmit={this.handleSubmit}>
-            <label className={styles.label} htmlFor="name">
-              {" "}
-              Name
+        <Container>
+          <form action="" onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="name"> Name</label>
               <input
                 required
-                className={styles.input}
+                className="form-control"
                 type="text"
                 name="name"
                 value={name}
                 placeholder="name"
                 onChange={this.handleChange}
               />
-            </label>
-            <label className={styles.label} htmlFor="number">
-              {" "}
-              Number
+            </div>
+            <div className="form-group">
+              <label htmlFor="number"> Number</label>
               <input
                 required
-                className={styles.input}
+                className="form-control"
                 type="tel"
                 name="number"
                 value={number}
                 placeholder="number"
                 onChange={this.handleChange}
               />
-            </label>
-            <input className={styles.inputBtn} type="submit" value="Add contuct" />
+            </div>
+            <input className="btn btn-primary" type="submit" value="Add contuct" />
           </form>
-        </div>
+        </Container>
       </>
     );
   }

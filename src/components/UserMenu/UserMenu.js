@@ -2,39 +2,28 @@ import React from "react";
 import { connect } from "react-redux";
 import authSelectors from "../../redux/auth/authSelectors";
 import authOperations from "../../redux/auth/authOperations";
-
-const styles = {
-  container: {
-    width: "100%",
-    textAlign: "right",
-    display: "flex",
-    jastifyContent: "flex-end",
-    alignItems: "center",
-  },
-  avatar: {
-    marginRight: 4,
-  },
-  name: {
-    fontWeight: 700,
-    marginRight: 12,
-  },
-  button: {
-    height: "35px",
-    width: "100px",
-    color: "white",
-    backgroundColor: "blue",
-    border: "1px solid grey",
-    borderRadius: "5px",
-  },
-};
+import { Navbar, Container, Nav, Button } from "react-bootstrap";
 
 const UserMenu = ({ avatar, name, onLogout }) => (
-  <div style={styles.container}>
-    <img src={avatar} alt="" width="100px" style={styles.avatar} />
-    <span style={styles.name}>Welcome, {name}</span>
-    <button style={styles.button} type="button" onClick={onLogout}>
-      Logout
-    </button>
+  <div>
+    <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+      <Container>
+        <Navbar.Brand>
+          <img src={avatar} alt="" width="100px" />
+          <span> Welcome, {name}</span>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse>
+          <Nav className="ml-auto">
+            <Nav.Link>
+              <Button className="btn btn-outline-success " variant="primary" type="button" onClick={onLogout}>
+                Logout
+              </Button>
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   </div>
 );
 

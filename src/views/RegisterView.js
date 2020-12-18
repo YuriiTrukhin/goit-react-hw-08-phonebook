@@ -4,43 +4,8 @@ import routes from "../routes";
 import { NavLink } from "react-router-dom";
 import authOperations from "../redux/auth/authOperations";
 import authSelectors from "../redux/auth/authSelectors";
-const styles = {
-  form: {
-    margin: "0 auto",
-    width: 320,
-  },
-  label: {
-    display: "flex",
-    flexDirection: "column",
-    padding: 4,
-    marginBottom: "10px",
-  },
-  container: {
-    padding: "10px",
-    width: "320px",
-    margin: "0 auto",
-    textAlign: "left",
-  },
-  button: {
-    height: "35px",
-    width: "100px",
-    color: "white",
-    backgroundColor: "blue",
-    border: "1px solid grey",
-    borderRadius: "5px",
-  },
-  link: {
-    textAlign: "center",
-    display: "inline-block",
-    textDecoration: "none",
-    color: "white",
-    backgroundColor: "blue",
-    border: "1px solid grey",
-    borderRadius: "5px",
-    padding: "4px",
-    width: "90px",
-  },
-};
+import { Navbar, Container, Nav } from "react-bootstrap";
+
 class RegisterView extends Component {
   state = {
     name: "",
@@ -70,33 +35,70 @@ class RegisterView extends Component {
   render() {
     const { name, email, password } = this.state;
     return (
-      <div style={styles.container}>
-        <NavLink style={styles.link} to={routes.HomeView}>
-          {" "}
-          Back
-        </NavLink>
-        <h1>Register page</h1>
+      <div>
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+          <Container>
+            <Navbar.Brand>
+              <img src="#" alt="" />
+              Register page
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse>
+              <Nav className="mr-auto">
+                <Nav.Link>
+                  <NavLink variant="outline-primary" to={routes.HomeView}>
+                    {" "}
+                    Back to home
+                  </NavLink>
+                </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+        <Container>
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <label>Name</label>
+              <input
+                className="form-control"
+                required
+                type="text"
+                name="name"
+                value={name}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                className="form-control"
+                required
+                type="email"
+                name="email"
+                value={email}
+                onChange={this.handleChange}
+              />
+              <small id="emailHelp" className="form-text text-muted">
+                We'll never share your email with anyone else.
+              </small>
+            </div>
+            <div className="form-group">
+              <label>Password</label>
+              <input
+                className="form-control"
+                required
+                type="password"
+                name="password"
+                value={password}
+                onChange={this.handleChange}
+              />
+            </div>
 
-        <form style={styles.form} onSubmit={this.handleSubmit}>
-          <label style={styles.label}>
-            Name
-            <input required type="text" name="name" value={name} onChange={this.handleChange} />
-          </label>
-
-          <label style={styles.label}>
-            Email
-            <input required type="email" name="email" value={email} onChange={this.handleChange} />
-          </label>
-
-          <label style={styles.label}>
-            Password
-            <input required type="password" name="password" value={password} onChange={this.handleChange} />
-          </label>
-
-          <button style={styles.button} type="submit">
-            Register
-          </button>
-        </form>
+            <button className="btn btn-primary" type="submit">
+              Register
+            </button>
+          </form>
+        </Container>
       </div>
     );
   }
